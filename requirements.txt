@@ -1,0 +1,10 @@
+jupyter==1.0.0
+streamlit==0.82.0
+nibabel==3.2.1
+scipy==1.6.3
+plotly==4.14.3
+tensorflow==2.5.0
+sklearn
+scikit-image==0.18.1
+opencv-python==4.5.2.54
+awesome_streamlit
