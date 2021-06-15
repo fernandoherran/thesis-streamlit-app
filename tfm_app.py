@@ -4,14 +4,6 @@ import SessionState
 import os
 from app_functions import *
 
-# Load neural network
-model_name = "3d_model_v4"
-model = load_model("./" + model_name + ".h5", 
-                       custom_objects = {'f1': f1})
-optimizer = Adam(learning_rate = 0.001, decay = 1e-6)
-model.compile(loss = "binary_crossentropy",
-                  optimizer = optimizer,
-                  metrics = [BinaryAccuracy(), f1])
 
 #import awesome_streamlit as ast
 #ast.core.services.other.set_logging_format()
