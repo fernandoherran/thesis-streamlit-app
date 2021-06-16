@@ -3,7 +3,7 @@ streamlit
 nibabel
 scipy
 plotly
-tensorflow-cpu==2.0.0
+tensorflow-cpu==1.15.0
 sklearn
 scikit-image
 opencv-python
