@@ -1,21 +1,18 @@
-
+# Import libraries
 import streamlit as st
 import SessionState
 import os
 from app_functions import *
-
-
+from tensorflow.keras.models import model_from_json
 #import awesome_streamlit as ast
 #ast.core.services.other.set_logging_format()
 
 # Load neural network
-model_name = "3d_model_v4"
-model = load_model("./" + model_name + ".h5", 
-                       custom_objects = {'f1': f1})
-optimizer = Adam(learning_rate = 0.001, decay = 1e-6)
-model.compile(loss = "binary_crossentropy",
-                  optimizer = optimizer,
-                  metrics = [BinaryAccuracy(), f1])
+json_file = open('model.json', 'r')
+loaded_model_json = json_file.read()
+json_file.close()
+model = model_from_json(loaded_model_json)
+model.load_weights('model_weights.h5')
 
 def home():
     st.title('Alzheimer detection')
@@ -26,41 +23,39 @@ def about():
     st.subheader('About the App')
     st.text('The objective of this application is to...')
     st.subheader('Resources')
-    st.markdown(f"""
+    st.markdown(f'''
 - [Linkedin](http://www.linkedin.com/in/fernando-herran-albelda/fr)
-- [App repository](https://www.github.com/fernandoherran)
-""")
+- [App repository](https://www.github.com/fernandoherran)''')
     
 def application():
-    st.title("Application")
-    
+    st.title('Application')
     st.subheader('Upload your MRI')
+    
     # Upload file
-    mri_file = st.file_uploader("Upload your MRI file. App supports Nifti (.nii) and zipped Nifti (.nii.gz) files.",
+    mri_file = st.file_uploader('Upload your MRI file. App supports Nifti (.nii) and zipped Nifti (.nii.gz) files.',
                                 type = ['nii','gz'])
     
+    # Process
     if mri_file is not None:
             
         # Check if file is correct
-        if "nii" not in mri_file.name:
-            st.text("Please choose a Nifti file")
+        if 'nii' not in mri_file.name:
+            st.text('Please choose a Nifti file')
 
-        if "nii" in mri_file.name:
+        if 'nii' in mri_file.name:
             
-            # Save uploaded file as nifti in a temporary folder
-            with open("./" + mri_file.name, "wb") as file: 
-
-                #file.write(mri_file.read())
+            # Save uploaded file as nifti temporarily
+            with open(mri_file.name, 'wb') as file: 
                 newFileByteArray = bytearray(mri_file.read())
                 file.write(newFileByteArray)
                 
-            session_state = SessionState.get(checkboxed=False)
+            session_state = SessionState.get(checkboxed = False)
 
+            # Calculate prediction
             if st.button('Run process') or session_state.checkboxed:
 
                 st.subheader('Alzheimer detection')
-                
-                ## PROCESS ##
+ 
                 mri_file = "./" + str(mri_file.name)
                 volume = process_scan(mri_file)
                 volume = volume[10:120, 30:160, 15:95]
@@ -69,25 +64,28 @@ def application():
                 
                 session_state.checkboxed = True
                 
-                if st.checkbox("Show skull-stripping"):
-                    st.text("skull stripping")
+                # Show preprocessing
+                if st.checkbox('Show preprocessing'):
+                    st.text('skull stripping')
                     
                 session_state.checkboxed = True
-                                
-                if st.checkbox("Show results"):
+                      
+                # Show class
+                if st.checkbox('Show results'):
                     
                     if prediction > 0.5:
-                        card("Alzheimer detected", f"with a probability of {prediction[0][0] * 100:.2f} %")
+                        card('Alzheimer detected', 
+                             f'with a probability of {prediction[0][0] * 100:.2f} %')
                     else:
-                        card("Cognitively normal", f"with a probability of {prediction[0][0] * 100:.2f} %")
+                        card('Cognitively normal', 
+                             f'with a probability of {prediction[0][0] * 100:.2f} %')
                         
-                    
                 session_state.checkboxed = True
-                                                
-                if st.checkbox("Show activation maps"):
-                    st.text("skull stripping")
+                
+                # Show activation maps
+                if st.checkbox('Show activation maps'):
+                    st.text('skull stripping')
                     
-
 def card(header, body):
     
     def card_begin_str(header):
@@ -112,18 +110,19 @@ def card(header, body):
 def main():
     
     # Define navigation panel
-    st.sidebar.title("Navigation")
-    selection = st.sidebar.radio("Go to", ["Home","Application","About"])
+    st.sidebar.title('Navigation')
+    selection = st.sidebar.radio('Go to', 
+                                 ['Home', 'Application', 'About'])
     
     # Define section pages
-    if selection == "Home":
+    if selection == 'Home':
         home()
     
-    if selection == "Application":
+    if selection == 'Application':
         application()
     
-    if selection == "About":
+    if selection == 'About':
         about()
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

@@ -3,9 +3,9 @@ streamlit
 nibabel
 scipy
 plotly
-tensorflow-cpu==1.15.0
+tensorflow-cpu
 sklearn
 scikit-image
 opencv-python
-h5py==2.10.0
+h5py
 #awesome_streamlit
