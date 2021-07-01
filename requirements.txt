@@ -1,11 +1,18 @@
-#jupyter==1.0.0
+# Streamlit
 streamlit
-nibabel
-scipy
+
+# Visualization
 plotly
-tensorflow-cpu
-sklearn
 scikit-image
 opencv-python
-h5py
-#awesome_streamlit
+
+# Data handling
+scipy
+
+# Preprocessing
+nibabel
+
+# Deep learning
+sklearn
+tensorflow-cpu
+
