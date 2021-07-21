@@ -1,5 +1,3 @@
-notebook==4.4.1
-
 # Streamlit
 streamlit
 
