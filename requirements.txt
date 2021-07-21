@@ -1,10 +1,12 @@
+notebook==4.4.1
+
 # Streamlit
 streamlit
 
 # Visualization
 plotly
 scikit-image
-opencv-python
+opencv-python==4.5.2.54
 
 # Data handling
 scipy
@@ -15,4 +17,6 @@ nibabel
 # Deep learning
 sklearn
 tensorflow-cpu
+
+
 
