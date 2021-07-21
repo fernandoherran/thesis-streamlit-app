@@ -174,7 +174,7 @@ def process_scan(file):
     return volume
 
 
-def get_activation_map(model, volume, layer_name = 'conv3d_31'):
+def get_activation_map(model, volume, layer_name = 'conv3d_23'):
     '''
     Function used to extract the activation maps of a CNN
     Inputs: CNN model, 3D image, last convolutional layer of the model
