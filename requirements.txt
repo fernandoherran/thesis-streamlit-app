@@ -6,7 +6,8 @@ streamlit
 # Visualization
 plotly
 scikit-image
-opencv-python
+#opencv-python
+opencv-python-headless
 
 # Data handling
 scipy
