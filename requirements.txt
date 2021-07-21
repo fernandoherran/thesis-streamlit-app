@@ -6,7 +6,8 @@ streamlit
 # Visualization
 plotly
 scikit-image
-opencv-python==4.5.2.54
+#opencv-python==4.5.2.54
+opencv-python==4.5.1.48
 
 # Data handling
 scipy
