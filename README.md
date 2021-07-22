@@ -28,4 +28,4 @@ pip install -r requirements.txt
 
 ### Repository
 
-File `tfm_app.py` contains the code to build the Streamlit application. It has some dependencies, which can be found in the folder *aux_dependencies*. In the main folder of the repository there are also the files Procfile and setup.sh, which are needed to deploy the application using Heroku, and the requirements.txt and README.md .
+File `tfm_app.py` contains the code to build the Streamlit application. It has some dependencies, which can be found in the folder *aux_dependencies*.
