@@ -4,7 +4,7 @@ Project by Fernando Herrán Albelda (Master in Data Science for KSchool).
 ### Objective
 This repository contains all the code and dependencies needed to build an Streamlit application. This application is part of the thesis done in the Master of Data Science for KSchool, which goal is to build a 3D - Convolutional Neural Network to classify patients with Alzheimer's disease (AD) or cognitively normal (CN) using Magnetic Resonance Images (MRI) of their brains. The Github repository of the project can be found [here](https://github.com/fernandoherran/master-thesis).
 
-The streamlit application, which has been deployed using Azure, can be found [here](https://alzheimer-detection.herokuapp.com/).
+The streamlit application, which has been deployed using Azure, can be found [here](https://alzheimer-prediction.azurewebsites.net).
 
 ### Set-up virtual environment
 In order to run the code without having dependencies problems, the user can create a virtual environment with all the needed packages. To create the virtual environment, please follow process below: 
