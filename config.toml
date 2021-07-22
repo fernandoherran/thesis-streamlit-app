@@ -8,7 +8,7 @@
 disableWatchdogWarning = false
 
 # Configure the ability to share apps to the cloud.
-# Should be set to one of these values: - "off" : turn off sharing. - "s3" : share to S3, based on the settings under the [s3] section of this config file. - "file" : share to a directory on the local machine. This is meaningful only for debugging Streamlit itself, and shouldn't be used for production.
+# Should be set to one of these values: - "off" : turn off sharing. - "s3" : share to S3, based on the settings under the [s3] section of this config file.
 # Default: "off"
 sharingMode = "off"
 
@@ -18,22 +18,7 @@ showWarningOnDirectExecution = true
 
 # Level of logging: 'error', 'warning', 'info', or 'debug'.
 # Default: 'info'
-#
-# DEPRECATED.
-# global.logLevel has been replaced with logger.level
-# This option will be removed on or after 2020-11-30.
-#
-#logLevel =
-
-[logger]
-
-# Level of logging: 'error', 'warning', 'info', or 'debug'.
-# Default: 'info'
-level = "debug"
-
-# String format for logging messages. If logger.datetimeFormat is set, logger messages will default to `%(asctime)s.%(msecs)03d %(message)s`. See [Python's documentation](https://docs.python.org/2.6/library/logging.html#formatter-objects) for available attributes.
-# Default: None
-messageFormat = "%(asctime)s %(levelname) -7s %(name)s: %(message)s"
+logLevel = "debug"
 
 
 [client]
@@ -110,21 +95,25 @@ serverPort = 80
 
 # Name of the AWS S3 bucket to save apps.
 # Default: (unset)
-#bucket =
+# bucket =
 
 # URL root for external view of Streamlit apps.
 # Default: (unset)
-#url =
+# url =
 
 # Access key to write to the S3 bucket.
 # Leave unset if you want to use an AWS profile.
 # Default: (unset)
-#accessKeyId =
+# accessKeyId =
 
 # Secret access key to write to the S3 bucket.
 # Leave unset if you want to use an AWS profile.
 # Default: (unset)
 #secretAccessKey =
+
+# Make the shared app visible only to users who have been granted view permission. If you are interested in this option, contact us at support@streamlit.io.
+# Default: false
+# requireLoginToView = false
 
 # The "subdirectory" within the S3 bucket where to save apps.
 # S3 calls paths "keys" which is why the keyPrefix is like a subdirectory. Use "" to mean the root directory.
@@ -133,9 +122,9 @@ keyPrefix = ""
 
 # AWS region where the bucket is located, e.g. "us-west-2".
 # Default: (unset)
-#region =
+# region =
 
 # AWS credentials profile to use.
 # Leave unset to use your default profile.
 # Default: (unset)
-#profile =
+# profile =
